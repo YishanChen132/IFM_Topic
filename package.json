@@ -1,0 +1,19 @@
+{
+  "name": "ifm-workspace",
+  "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace frontend",
+    "dev": "npm run dev --workspace frontend -- --host 0.0.0.0",
+    "serve": "node server.mjs",
+    "start": "npm run build && npm run serve",
+    "test": "npm run test --workspace frontend",
+    "type-check": "npm run type-check --workspace frontend"
+  }
+}
