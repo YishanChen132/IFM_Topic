@@ -13,23 +13,23 @@ server.mjs：正式環境用的伺服器，已設定好支援 React Router，重
 - **npm**: v10 或更高版本
 
 
-## 🏃 啟動步驟
-### 1. 安裝必要套件
+## 啟動步驟
+1. 安裝必要套件
 拿到程式碼後，第一步請先安裝依賴：
 ```bash
 npm install
+```
 
-
-2. 啟動成品 (Production Mode)
+2. 啟動成品
 如果你只是想看看目前的成品，執行這個指令：
 ```bash
 npm start
+```
 啟動後，請打開瀏覽器前往： http://localhost:4173
-
 
 如果你不想在電腦裝一堆 Node.js 環境，只要你有安裝 Docker，可以直接一鍵搞定：
 ```bash
 docker compose up --build
-
+```
 
 
