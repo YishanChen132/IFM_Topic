@@ -1,4 +1,5 @@
 import {NavLink, Outlet} from 'react-router-dom';
+import casebeeLogo from '../../../pic/casebee.png';
 
 const navigationItems = [
   {to: '/kanban', label: '案件看板', badge: '3'},
@@ -20,8 +21,7 @@ export function AppShell() {
       <div className="app-shell__frame">
         <aside className="app-shell__sidebar">
           <div className="app-shell__brand">
-            <div className="app-shell__brand-mark">聊若指掌</div>
-            <p className="app-shell__brand-copy">自由工作者案件管理</p>
+            <img className="app-shell__brand-image" src={casebeeLogo} alt="Casebee" />
           </div>
 
           <div className="app-shell__section">

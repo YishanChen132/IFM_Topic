@@ -83,21 +83,19 @@ button {
 }
 
 .app-shell__brand {
-  display: grid;
-  gap: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0 4px 14px;
   border-bottom: 1px solid var(--border);
 }
 
-.app-shell__brand-mark {
-  font-size: 17px;
-  font-weight: 700;
-}
-
-.app-shell__brand-copy {
-  margin: 0;
-  color: var(--text-secondary);
-  font-size: 11px;
+.app-shell__brand-image {
+  display: block;
+  width: 100%;
+  max-width: 148px;
+  height: auto;
+  object-fit: contain;
 }
 
 .app-shell__section {
