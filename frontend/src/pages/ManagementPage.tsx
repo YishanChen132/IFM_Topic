@@ -28,6 +28,12 @@ const platformClassMap: Record<Extract<CrmPlatform, 'LINE' | 'Gmail' | 'Instagra
   Instagram: 'messages-thread-card__platform messages-thread-card__platform--instagram',
 };
 
+const healthPriorityMap = {
+  danger: 2,
+  warning: 1,
+  success: 0,
+} as const;
+
 export function ManagementPage() {
   const navigate = useNavigate();
   const {cases} = useCrmStore();
@@ -51,7 +57,17 @@ export function ManagementPage() {
         return [item.title, item.customerName, item.deliverable].some((value) => value.toLowerCase().includes(keyword));
       })
       .slice()
-      .sort((a, b) => (sortByLatest ? a.code.localeCompare(b.code) : (b.amount ?? 0) - (a.amount ?? 0)));
+      .sort((a, b) => {
+        const riskPriorityDiff =
+          Number(Boolean(b.highRisk)) - Number(Boolean(a.highRisk)) ||
+          healthPriorityMap[b.health.tone] - healthPriorityMap[a.health.tone];
+
+        if (riskPriorityDiff !== 0) {
+          return riskPriorityDiff;
+        }
+
+        return sortByLatest ? a.code.localeCompare(b.code) : (b.amount ?? 0) - (a.amount ?? 0);
+      });
   }, [activeStatus, cases, highRiskOnly, query, sortByLatest]);
 
   const totalPages = Math.max(2, Math.ceil(visibleCases.length / 8) || 1);
